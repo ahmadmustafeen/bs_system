@@ -18,6 +18,34 @@
     display: none;
 }
 
+.dit-heading button{
+
+        /* width: 350px; */
+        outline: none;
+        width: 200px;
+        margin-top: 20px;
+        padding: 15px 0px;
+        /* height: 50px; */
+        border: 0px solid black;
+        border-radius: 30px;
+        background-color: #2ca8ff;
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+.dashboard-dit-heading{
+      padding: 40px 0 !important;
+      width: 80% !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+.dit-heading{
+    width: 60% !important;
+}
+
 
 
 #teacher-heading, #teacher-div, #batch-heading, #batch-div{
@@ -39,12 +67,14 @@
 
 body{
     margin: 0;
-    padding: 0;
+    padding: 0; 
+    background-color:#e0e0e0;
     font-family: Montserrat,Helvetica;
 }
 .dashboard{
     width: 100%;
     height: fit-content;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
 }
@@ -163,7 +193,13 @@ body{
 /* graph section */
 .dashboard-inner-main-graph{
     width: 100%;
-    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 40px;
+    color: white;
     background: linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788);
 }
 

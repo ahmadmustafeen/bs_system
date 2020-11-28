@@ -16,6 +16,7 @@ $subject =  $_POST['subject'];
 $day =  $_POST['day'];
 $credit =  $_POST['credit'];
 $section =  $_POST['section'];
+$section = strtolower($section);
 $term_id = 1;
 $table_name = $dept."_".$batch."_".$subject."_".$term_id."_".$section."_attendance";
 // echo $table_name;

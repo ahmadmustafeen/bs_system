@@ -24,6 +24,7 @@
 
 require_once('../connection.php');
 session_start();
+date_default_timezone_set("Asia/Karachi");
 if(isset($_SESSION['User']))
 {
     $username = $_SESSION['User'];
@@ -46,7 +47,6 @@ if(isset($_SESSION['User']))
     while($row = mysqli_fetch_assoc($teacherID_Q)){
         $teacher_id = $row['user_teacherid'];
     }
-
     // section 2
     $teacherNAME_Q  = mysqli_query($con,"SELECT `teacher_name` FROM `teacher` WHERE teacher_id = '$teacher_id'");
     while($row = mysqli_fetch_assoc($teacherNAME_Q)){
@@ -57,7 +57,7 @@ if(isset($_SESSION['User']))
     $date = date('Y-m-d');
     $dayOfWeek = date("l", strtotime($date));
     $dayOfWeek = strtolower($dayOfWeek);
-    $nu = 0;
+//   echo $dayOfWeek;
     switch($dayOfWeek){
         case 'monday':
             $nu = 1;
@@ -76,6 +76,9 @@ if(isset($_SESSION['User']))
         break;
         case 'saturday':
             $nu = 6;
+        break;
+          case 'sunday':
+            $nu = 7;
         break;
       
     }
@@ -182,7 +185,16 @@ foreach($period_ids as $period_id){
                             View Attendance
                         </div>
                     </a>
-                </div>
+                </div> 
+                <div class="row-sidebar">
+                        <a href="./forgetPassword.html">
+                            <i class="fas fa-unlock-alt icon-sidebar"></i>
+                            <div class="row-sidebar-text ">
+                                Change Password
+                            </div>
+                        </a>
+
+                    </div>
                 <!-- <div class="row-sidebar">
                     <i class="far fa-calendar-alt icon-sidebar"></i>
                     <div class="row-sidebar-text ">

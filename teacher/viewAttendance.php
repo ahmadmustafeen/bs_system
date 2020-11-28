@@ -123,7 +123,7 @@ $period_name_Q  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE t
                     
                 </h2>
 
-                <div class="dit-heading">
+                <div class="dit-heading >
                     <table>
                         <tr>
                             <td>
