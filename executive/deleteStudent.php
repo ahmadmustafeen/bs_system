@@ -1,6 +1,22 @@
 <?php
 
 require_once('../connection.php');
+
+
+
+session_start();
+date_default_timezone_set("Asia/Karachi");
+if(isset($_SESSION['User']))
+{
+    $username = $_SESSION['User'];
+    $user_level_Q  = mysqli_query($con,"SELECT `user_type` FROM `login_info` WHERE username = '$username'");
+    while($row = mysqli_fetch_assoc($user_level_Q)){
+        $user_level = $row['user_type'];
+    }
+    if($user_level != '2'){
+        header('location:../wellcome.php');
+    }
+
 $get_depart  = mysqli_query($con,"SELECT `department_id`,`department_name` FROM `department` WHERE 1");
 $get_batch  = mysqli_query($con,"SELECT `batch_id`,`batch_name` FROM `batch` WHERE 1");
 $get_time = mysqli_query($con,"SELECT `period_id`, `period_name` FROM `period` WHERE 1");
@@ -35,7 +51,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
 
 <body>
     <div class="dashboard">
-      <?php require_once("./sidebar.php") ?>
+        <?php require_once("./sidebar.php") ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="main-box">
                 <h2>
@@ -97,7 +113,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
                                 <td>
                                     <Select name='section' id='section'>
 
-                                    <option value="a" name='section'>
+                                        <option value="a" name='section'>
                                             A
                                         </option>
                                         <option value="b" name='section'>
@@ -111,7 +127,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
                                 </td>
                             </tr>
 
-                          
+
                             <tr>
                                 <td>
                                     <label for="rollnumber" required>
@@ -252,25 +268,25 @@ window.onclick = function(event) {
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <script>
-    if ($(window).width() > 768) {
-        $('#sidebar').hover(function () {
+if ($(window).width() > 768) {
+    $('#sidebar').hover(function() {
             // alert("done");
             $(this).addClass('sidebar-opened');
             $(".row-sidebar-text").addClass('text-opened');
             $('.icon-sidebar').css('margin', '0px');
             $('.row-sidebar').css('padding', '0px 10px');
         },
-            function () {
-                $(this).removeClass('sidebar-opened');
-                $(".row-sidebar-text").removeClass('text-opened');
-                $(".dashboard-inner").removeClass('da');
-                $('.icon-sidebar').css('margin', 'auto');
-                $('.row-sidebar').css('padding', '0px');
-            }
-        );
-    }
+        function() {
+            $(this).removeClass('sidebar-opened');
+            $(".row-sidebar-text").removeClass('text-opened');
+            $(".dashboard-inner").removeClass('da');
+            $('.icon-sidebar').css('margin', 'auto');
+            $('.row-sidebar').css('padding', '0px');
+        }
+    );
+}
 </script>
-    
+
 
 
 
@@ -281,3 +297,10 @@ function get(ida) {
     alert(ida);
 }
 </script>
+
+<?php
+}
+else{
+    header("location:../login.html");
+
+}

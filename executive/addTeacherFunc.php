@@ -2,6 +2,20 @@
 
 require_once('../connection.php');
 
+session_start();
+date_default_timezone_set("Asia/Karachi");
+if(isset($_SESSION['User']))
+{
+    $username = $_SESSION['User'];
+    $user_level_Q  = mysqli_query($con,"SELECT `user_type` FROM `login_info` WHERE username = '$username'");
+    while($row = mysqli_fetch_assoc($user_level_Q)){
+        $user_level = $row['user_type'];
+    }
+    if($user_level != '2'){
+        header('location:../wellcome.php');
+    }
+
+
 
 
 
@@ -258,3 +272,10 @@ function get(ida) {
 
 
 ?>
+
+<?php
+}
+else{
+    header("location:../login.html");
+
+}

@@ -1,6 +1,21 @@
 <?php
 
 require_once('../connection.php');
+session_start();
+date_default_timezone_set("Asia/Karachi");
+if(isset($_SESSION['User']))
+{
+    $username = $_SESSION['User'];
+    $user_level_Q  = mysqli_query($con,"SELECT `user_type` FROM `login_info` WHERE username = '$username'");
+    while($row = mysqli_fetch_assoc($user_level_Q)){
+        $user_level = $row['user_type'];
+    }
+    if($user_level != '2'){
+        header('location:../wellcome.php');
+    }
+
+
+
 $get_depart  = mysqli_query($con,"SELECT `department_id`,`department_name` FROM `department` WHERE 1");
 $get_batch  = mysqli_query($con,"SELECT `batch_id`,`batch_name` FROM `batch` WHERE 1");
 $get_time = mysqli_query($con,"SELECT `period_id`, `period_name` FROM `period` WHERE 1");
@@ -388,3 +403,10 @@ function get(ida) {
     alert(ida);
 }
 </script>
+
+<?php
+}
+else{
+    header("location:../login.html");
+
+}

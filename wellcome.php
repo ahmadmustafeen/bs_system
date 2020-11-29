@@ -13,7 +13,7 @@
         header("location:./admin/");
         }
          if($user_level == 2){
-        header("location:./head/");
+        header("location:./executive/");
         }
         if($user_level == 3){
             header("location:./teacher/");
