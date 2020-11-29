@@ -2,6 +2,18 @@
 require_once('../connection.php');
 include_once("../functions/queryToArr.php");
 include_once("../functions/calculatingAttendance.php");
+session_start();
+date_default_timezone_set("Asia/Karachi");
+if(isset($_SESSION['User']))
+{
+    $username = $_SESSION['User'];
+    $user_level_Q  = mysqli_query($con,"SELECT `user_type` FROM `login_info` WHERE username = '$username'");
+    while($row = mysqli_fetch_assoc($user_level_Q)){
+        $user_level = $row['user_type'];
+    }
+    if($user_level != '1'){
+        header('location:../wellcome.php');
+    }
 
 // authentication to be done here...
 
@@ -255,7 +267,15 @@ foreach($table_name as $data){
 <script src="../assests/script/dashbaord.js"></script>
 
 </html> 
+<?php
 
+                    }
+else{
+    header("../login.html");
+}
+
+
+                    ?>
 
 <!-- <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

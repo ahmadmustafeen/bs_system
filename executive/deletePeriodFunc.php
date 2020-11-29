@@ -17,13 +17,14 @@ $subject =  $_POST['subject'];
 $day =  $_POST['day'];
 $credit =  $_POST['credit'];
 $section =  $_POST['section'];
+
 $section = strtolower($section);
 $term_id = 1;
 
 
 
 
-$get_details  = "DELETE FROM `period_table_normal` WHERE dept_id = '$dept' and batch_id = '$batch' and teacher_id = '$teacher' and room = '$room' and timing_id = '$time' and day_id = '$day' and credit_hour = '$credit'";
+$get_details  = "DELETE FROM `period_table_normal` WHERE dept_id = '$dept' and batch_id = '$batch' and teacher_id = '$teacher' and room_id = '$room' and timing_id = '$time' and day_id = '$day' and credit_hour = '$credit'";
 if($con -> query($get_details)){
 ?>
 
@@ -105,7 +106,7 @@ else{
         <div class="dashboard-inner " id="main-bar">
             <div class="main-box">
                 <h2>
-                    Period  Successfully Deleted!  
+                    Something Went Wrong!  
                 </h2>
                 <a href="./index.php">
                 <button>Go to dashboard </button>
