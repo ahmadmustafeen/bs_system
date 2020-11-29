@@ -32,85 +32,17 @@ $period_name_Q  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE t
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title>Dashboard</title>
+    
+    <script>
+            <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
+            </script>
 </head>
 
 <body style="background-color: #e0e0e0;">
     <div class="dashboard">
-        <div class="sidebar " id="sidebar">
-            <div class="sidebar-inner " id="sidebar-inner">
-                <p>D.A.M.S</p>
-                <hr>
-                <div class="row-sidebar profile">
-
-                    <i class="far fa-user-circle icon-sidebar"></i>
-                    <div class="row-sidebar-text name-bar ">
-                        <?php echo $teacher_name; ?>
-
-                    </div>
-                </div>
-                <div id="drop-down-profile" class="row-sidebar-profile">
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-address-card icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                View Profile
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-unlock-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Change Password
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-                <hr>
-                <div class="row-sidebar selected-sidebar">
-
-
-                    <i class="fas fa-file-upload icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Upload Attendance
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <a href="./attendance-eng.html">
-
-                        <i class="fas fa-file-upload icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            View Attendance
-                        </div>
-                    </a>
-                </div>
-
-                <div class="row-sidebar">
-                    <a href="../logout.php" class='row-sidebar' style='width:100%'>
-                        <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Logout
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-        </div>
+       <?php include_once("./sidebar.php"); ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="floating-menu">
                 <button id="floating">X</button>
@@ -123,7 +55,7 @@ $period_name_Q  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE t
                     
                 </h2>
 
-                <div class="dit-heading >
+                <div class="dit-heading" style="align-self:center;" >
                     <table>
                         <tr>
                             <td>

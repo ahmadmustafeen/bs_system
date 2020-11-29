@@ -1,3 +1,23 @@
+<?php
+include_once('../connection.php');
+$departments = [];
+$batchs = [];
+$department_Q = mysqli_query($con,"SELECT `department_name`,`department_id` from `department` where 1");
+while($row = mysqli_fetch_assoc($department_Q)){
+    $department_name =  $row['department_name'];  
+    $department_id =  $row['department_id']; 
+    $arr = [$department_id,$department_name];
+    array_push($departments,$arr);
+ }
+ $batch_Q = mysqli_query($con,"SELECT `batch_name`,`batch_id` from `batch` where 1");
+ while($row = mysqli_fetch_assoc($batch_Q)){
+     $batch_name =  $row['batch_name'];  
+     $batch_id =  $row['batch_id']; 
+     $arr = [$batch_id,$batch_name];
+     array_push($batchs,$arr);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +27,6 @@
     <script src="../assests/script/dashbaord.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
     <title>Dashboard</title>
 </head>
 
@@ -16,6 +35,13 @@
 
 <body>
     <div class="dashboard">
+        <?php if(isset($_GET['no_Record_found'])){
+            ?>
+            <script>
+                alert("Class does'nt exist!");
+            </script>
+            <?php
+            }?>
         <div class="sidebar " id="sidebar">
             <div class="sidebar-inner " id="sidebar-inner">
                 <p style="text-align:center">D.A.M.S</p>
@@ -98,24 +124,54 @@
                 <button id="floating">X</button>
             </div>
 
-             <!-- top graph -->
             <div class="dashboard-inner-main-graph">
                 Dawood Attendance Management System
             </div>
 
-
-
             <div class="dashboard-inner-teacher dashboard-dit-heading">
                 <div class="dit-heading">
+                    <form action="renderer.php" method="post">
                     <table>
-                       
                         <tr>
                             <td>
-                                <h3>Select Subject</h3>
+                                <h3>Select Department</h3>
                             </td>
                             <td>
-                                <Select name="depart" id="selectDepart">
-                                    <option selected disabled>Select from Available Batch</option>
+                                <Select name="dept_id" id="dept_id">
+
+                                    <option >Select from Available Department
+                                    </option>
+                                    <?php
+                                    foreach($departments as $department){
+                                        $department_id = $department[0];
+                                        $department_name = $department[1];
+                                    ?>
+                                        <option name="dept_id" value="<?php echo $department_id?>"><?php echo $department_name ?></option>
+                                    <?php
+                                    }
+
+                                    ?>
+                                   
+                                </Select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>Select Batch</h3>
+                            </td>
+                            <td>
+                                <Select name="batch_id" id="batch">
+                                    <option  disabled>Select from Available Batch</option>
+                                    <?php
+                                    foreach($batchs as $batch){
+                                        $batch_id = $batch[0];
+                                        $batch_name = $batch[1];
+                                    ?>
+                                        <option name="batch_id" value="<?php echo $batch_id?>"><?php echo $batch_name ?></option>
+                                    <?php
+                                    }
+
+                                    ?>
                                 </Select>
                             </td>
                         </tr>
@@ -137,6 +193,7 @@
 
 
                     </table>
+                    </form>
                 </div>
             </div>
 
@@ -247,6 +304,8 @@
 
 <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
 </body>
-
+<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
+<!-- <script src="../assests/script/dashbaord.js"></script> -->
+<!-- <script src="./jquery.min.js"></script> -->
 
 </html>

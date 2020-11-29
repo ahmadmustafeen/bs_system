@@ -135,119 +135,7 @@ foreach($period_ids as $period_id){
 
 <body style="background-color: #e0e0e0;">
     <div class="dashboard">
-        <div class="sidebar " id="sidebar">
-            <div class="sidebar-inner " id="sidebar-inner">
-                <p>D.A.M.S</p>
-                <hr>
-                <div class="row-sidebar profile">
-
-                    <i class="far fa-user-circle icon-sidebar"></i>
-                    <div class="row-sidebar-text name-bar ">
-                        <?php echo $teacher_name; ?>
-
-                    </div>
-                </div>
-                <div id="drop-down-profile" class="row-sidebar-profile">
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-address-card icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                View Profile
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-unlock-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Change Password
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-                <hr>
-                <div class="row-sidebar selected-sidebar">
-
-
-                    <i class="fas fa-file-upload icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Upload Attendance
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <a href="./viewAttendance.php">
-
-                        <i class="fas fa-file-upload icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            View Attendance
-                        </div>
-                    </a>
-                </div> 
-                <div class="row-sidebar">
-                        <a href="./forgetPassword.html">
-                            <i class="fas fa-unlock-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Change Password
-                            </div>
-                        </a>
-
-                    </div>
-                <!-- <div class="row-sidebar">
-                    <i class="far fa-calendar-alt icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        View Timetable
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-users icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Remaining Scheduled Classes
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fab fa-stack-overflow icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Student Attendance Statistics
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fab fa-stack-overflow icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Classes Conducted Statistics
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-download icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        PDF Report Download
-                    </div>
-                </div> -->
-                <div class="row-sidebar">
-                    <a href="../logout.php" class='row-sidebar' style='width:100%'>
-                        <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Logout
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-        </div>
+       <?php include_once("./sidebar.php"); ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="floating-menu">
                 <button id="floating">X</button>
@@ -450,7 +338,6 @@ foreach($period_ids as $period_id){
 
 
 
-    </div>
     </div>
 
 
