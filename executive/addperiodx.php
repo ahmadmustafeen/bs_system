@@ -39,7 +39,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
                 <p>D.A.M.S</p>
                 <hr>
                 <div class="row-sidebar">
-                 <a href="./index.html">   <i class="far fa-user-circle icon-sidebar"></i>
+                 <a href="./index.php">   <i class="far fa-user-circle icon-sidebar"></i>
                     <div class="row-sidebar-text name-bar ">
                         Admin
                     </div>

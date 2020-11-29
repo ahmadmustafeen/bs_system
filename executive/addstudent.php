@@ -29,120 +29,7 @@ $get_batch  = mysqli_query($con,"SELECT `batch_id`,`batch_name` FROM `batch` WHE
 
 <body>
     <div class="dashboard">
-        <div class="sidebar " id="sidebar">
-            <div class="sidebar-inner " id="sidebar-inner">
-                <p>D.A.M.S</p>
-                <hr>
-                <div class="row-sidebar">
-                 <a href="./index.html">   <i class="far fa-user-circle icon-sidebar"></i>
-                    <div class="row-sidebar-text name-bar ">
-                        Admin
-                    </div>
-    </a>            </div>
-                <hr>
-                <div class="row-sidebar selected-sidebar profile">
-                    <i class="fas fa-university icon-sidebar "></i>
-                    <div class="row-sidebar-text ">
-                        ADD
-                    </div>
-                </div>
-                <div id="drop-down-profile" class="row-sidebar-profile">
-                    <div class="row-sidebar">
-                        <a href="./addsubject.php">
-                        <i class="fas fa-download icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Subject
-                        </div>
-                        </a>
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="./addteacher.html">
-                        <i class="fas fa-download icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Add Teacher
-                        </div>
-                        </a>
-                    
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="./addStudent.php">
-                        <i class="fas fa-download icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Student
-                        </div>
-                    </a>
-                       
-                    </div>
-                    <div class="row-sidebar">
-                        <i class="fas fa-download icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Department
-                        </div>
-                    </div>
-                    <div class="row-sidebar">
-                        <i class="fas fa-download icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Batch
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row-sidebar">
-                    <a href="./addperiod.php">
-
-                    <i class="fas fa-building icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Upload Timetable
-                    </div>
-                    </a>
-                    
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-users icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Upload Compensated Table
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-user-friends icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Delete Subject
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-book icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Delete Teacher
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-download icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Delete Student
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Edit Profile
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Logout
-                    </div>
-                </div>
-
-
-            </div>
-
-
-
-
-
-        </div>
+      <?php require_once("./sidebar.php") ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="main-box">
                 <h2>
@@ -203,11 +90,11 @@ $get_batch  = mysqli_query($con,"SELECT `batch_id`,`batch_name` FROM `batch` WHE
                                     </label>
                                 </td>
                                 <td>
-                                <select name="section" id="section">
-                                <option value="A"  name="section" >A</option>
-                                <option value="B"  name="section" >B</option>
-                                <option value="C"  name="section" >C</option>
-                                </select>
+                                    <select name="section" id="section">
+                                        <option value="A" name="section">A</option>
+                                        <option value="B" name="section">B</option>
+                                        <option value="C" name="section">C</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -344,9 +231,29 @@ window.onclick = function(event) {
     }
 }
 </script>
-<script src="./jquery.js"></script>
 
-
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script>
+    if ($(window).width() > 768) {
+        $('#sidebar').hover(function () {
+            // alert("done");
+            $(this).addClass('sidebar-opened');
+            $(".row-sidebar-text").addClass('text-opened');
+            $('.icon-sidebar').css('margin', '0px');
+            $('.row-sidebar').css('padding', '0px 10px');
+        },
+            function () {
+                $(this).removeClass('sidebar-opened');
+                $(".row-sidebar-text").removeClass('text-opened');
+                $(".dashboard-inner").removeClass('da');
+                $('.icon-sidebar').css('margin', 'auto');
+                $('.row-sidebar').css('padding', '0px');
+            }
+        );
+    }
+</script>
+    
 
 
 

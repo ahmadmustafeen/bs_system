@@ -1,47 +1,3 @@
-<?php
-
-require_once('../connection.php');
-
-
-
-
-    if(!isset($_POST['deptS'])){
-        header("location:./automatic.php");
-    }
-
-    include("../Classes/PHPExcel/IOFactory.php");  
-
-    $allowed = array('.xlsx');
-    $filename = $_FILES['excelFile']['name'];
-    $file = explode(".",$filename);
-    $filename = $file[1];
-   
-
-
-    if(isset($_FILES['excelFile']) && !empty($_FILES['excelFile']['tmp_name'])){
-        $excelObject = PHPExcel_IOFactory::load($_FILES['excelFile']['tmp_name']);
-        $getsheet = $excelObject->getActiveSheet()->toArray(null);
-        // echo "<pre>";
-        $file = $_FILES['excelFile']['tmp_name'];
-        $readerType = 'Excel2007';
-        $reader = PHPExcel_IOFactory::createReader($readerType);
-        $PHPExcel = $reader->load($file);
-        $sheet = $PHPExcel->getSheet(0);
-        
-        $highestRow = $sheet->getHighestRow();
-        $counter = 1;
-        for($i=0;$i<$highestRow;$i++){
-            $get_roll = explode("@",$getsheet[$i][0]);  
-            $roll_number = $get_roll[0];
-            // $get_roll = explode("@",$getsheet[$i][1]);  
-            // $subject_type = $get_roll[0];
-            
-            $subject_query = "INSERT INTO `subject`( `subject_name`, `subject_type`) VALUES ('$roll_number','theory')";
-            if($con -> query($subject_query)){
-               
-            }            
-        }
-        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,22 +9,41 @@ require_once('../connection.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <title>Dashboard</title>
+    <title>Add teacher - Admin</title>
 </head>
 
 <body>
     <div class="dashboard">
-   <?php include_once("./sidebar.php") ?>
+       <?php require_once("./sidebar.php")?>
         <div class="dashboard-inner " id="main-bar">
-            <div class="dashboard-inner-top">
+            <div class="main-box">
                 <h2>
-                    All the Subjects are Uploaded Successfully
+                    Add Teacher
                 </h2>
+                <div class="main-box-inner">
+                    <form action="./addTeacherFunc.php" method="POST" enctype="multipart/form-data">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="excelFile">Upload the Excel File</label>
+                                </td>
+                                <td>
+                                    <input type="file" name="excelFile" id="excelFile" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
 
+                                </td>
+                                <td>
+                                    <button type="submit" name="deptS">Submit</button>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
             </div>
-
-
-
         </div>
 
 
@@ -80,27 +55,6 @@ require_once('../connection.php');
 <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 <script src="../assests/script/dashbaord.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-<script>
-    if ($(window).width() > 768) {
-        $('#sidebar').hover(function () {
-            // alert("done");
-            $(this).addClass('sidebar-opened');
-            $(".row-sidebar-text").addClass('text-opened');
-            $('.icon-sidebar').css('margin', '0px');
-            $('.row-sidebar').css('padding', '0px 10px');
-        },
-            function () {
-                $(this).removeClass('sidebar-opened');
-                $(".row-sidebar-text").removeClass('text-opened');
-                $(".dashboard-inner").removeClass('da');
-                $('.icon-sidebar').css('margin', 'auto');
-                $('.row-sidebar').css('padding', '0px');
-            }
-        );
-    }
-</script>
 </html>
 
 <script>
@@ -206,6 +160,27 @@ window.onclick = function(event) {
 <script src="./jquery.js"></script>
 
 
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script>
+if ($(window).width() > 768) {
+    $('#sidebar').hover(function() {
+            // alert("done");
+            $(this).addClass('sidebar-opened');
+            $(".row-sidebar-text").addClass('text-opened');
+            $('.icon-sidebar').css('margin', '0px');
+            $('.row-sidebar').css('padding', '0px 10px');
+        },
+        function() {
+            $(this).removeClass('sidebar-opened');
+            $(".row-sidebar-text").removeClass('text-opened');
+            $(".dashboard-inner").removeClass('da');
+            $('.icon-sidebar').css('margin', 'auto');
+            $('.row-sidebar').css('padding', '0px');
+        }
+    );
+}
+</script>
 
 
 
@@ -214,20 +189,3 @@ function get(ida) {
     alert(ida);
 }
 </script>
-<?php
-        
-        
-
-
-
-    }
-       
-
-        
-           
-
-
-
-
-
-?>

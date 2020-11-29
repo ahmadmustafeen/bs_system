@@ -35,20 +35,19 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
 
 <body>
     <div class="dashboard">
-      <?php require_once("./sidebar.php");?>
+      <?php require_once("./sidebar.php") ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="main-box">
                 <h2>
-                    Add Period Table
+                    Add More Students to Existing Class
                 </h2>
                 <div class="main-box-inner">
-                    <form action="./addPeriodFunc.php" method="POST" enctype="multipart/form-data">
+                    <form action="./addmorestudentfunc.php" method="POST" enctype="multipart/form-data">
                         <table>
                             <tr>
                                 <td>
                                     <label for="dept">
                                         Select Department
-
                                     </label>
                                 </td>
                                 <td>
@@ -91,148 +90,48 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="subject">
-                                        Select subject
-
+                                    <label for="section" required>
+                                        Select Section
                                     </label>
                                 </td>
                                 <td>
-                                    <input list="brow" name='subject'>
-                                    <datalist id="brow">
-                                        <?php
-                                        while($row = mysqli_fetch_assoc($get_subject)){
-                                            $subject_id = $row['subject_id'];
-                                            $subject_name = $row['subject_name'];
-                                        
-                                        ?>
-                                        <option value="<?php echo $subject_id ?>" name='subject'>
-                                            <?php echo $subject_name ?></option>
-                                        <?php
-                                        }
-                                        ?>
+                                    <Select name='section' id='section'>
 
-                                    </datalist>
+                                    <option value="a" name='section'>
+                                            A
+                                        </option>
+                                        <option value="b" name='section'>
+                                            B
+                                        </option>
+                                        <option value="c" name='section'>
+                                            C
+                                        </option>
 
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="time">
-                                        Select Period
-
-                                    </label>
-                                </td>
-                                <td>
-                                    <Select name='time' id='time' required>
-                                        <?php
-                                        while($row = mysqli_fetch_assoc($get_time)){
-                                            $period_id = $row['period_id'];
-                                            $period_name = $row['period_name'];
-                                        
-                                        ?>
-                                        <option value="<?php echo $period_id ?>" name='time'>
-                                            <?php echo $period_name ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="day">
-                                        Select Day
-                                    </label>
-                                </td>
-                                <td>
-                                    <Select name='day' id='day' required>
-                                        <?php
-                                        while($row = mysqli_fetch_assoc($get_day)){
-                                            $day_id = $row['day_id'];
-                                            $day_name = $row['day_name'];
-                                        
-                                        ?>
-                                        <option value="<?php echo $day_id ?>" name='day'>
-                                            <?php echo $day_name ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="teacher">
-                                        Select Teacher
-                                    </label>
-                                </td>
-                                <td>
-                                    <input list="b" name='teacher'>
-                                    <datalist id="b">
-
-                                        <?php
-                                        while($row = mysqli_fetch_assoc($get_teacher)){
-                                            
-                                            $teacher_name = $row['teacher_name'];
-                                            $teacher_id = $row['teacher_id'];
-                                        ?>
-                                        <option value="<?php echo $teacher_id ?>" name='teacher'>
-                                            <?php echo $teacher_name ?></option>
-                                        <?php
-                                        }
-                                        ?>
-
-                                    </datalist>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="room">
-                                        Select Room
-                                    </label>
-                                </td>
-                                <td>
-                                    <Select name='room' id='room' required>
-                                        <?php
-                                        while($row = mysqli_fetch_assoc($get_room)){
-                                            $room_id = $row['room_id'];
-                                            $room_name = $row['room_name'];
-                                        
-                                        ?>
-                                        <option value="<?php echo $room_id ?>" name='room'>
-                                            <?php echo $room_name ?></option>
-                                        <?php
-                                        }
-                                        ?>
                                     </Select>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <label for="credit">
-                                        Enter Credit Hour
+                                    <label for="name" required>
+                                        Enter Name:
                                     </label>
                                 </td>
                                 <td>
-                                    <input type="number" name="credit" id="credit" required>
+                                    <input type="text" name="name" id="name">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="section">
-                                        Enter Section
+                                    <label for="rollnumber" required>
+                                        Enter Student ID:
                                     </label>
                                 </td>
                                 <td>
-                                    <select name="section" id="section" required>
-                                        <option value="A" name="section">A</option>
-                                        <option value="B" name="section">B</option>
-                                        <option value="C" name="section">C</option>
-                                    </select>
+                                    <input type="text" name="rollnumber" id="rollnumber">
                                 </td>
                             </tr>
+
 
                             <tr>
                                 <td>
@@ -358,6 +257,7 @@ window.onclick = function(event) {
 </script>
 <script src="./jquery.js"></script>
 
+
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <script>
@@ -379,6 +279,8 @@ window.onclick = function(event) {
         );
     }
 </script>
+    
+
 
 
 

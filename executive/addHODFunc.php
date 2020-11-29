@@ -98,7 +98,7 @@ require_once('../connection.php');
                 <p>D.A.M.S</p>
                 <hr>
                 <div class="row-sidebar">
-                 <a href="./index.html">   <i class="far fa-user-circle icon-sidebar"></i>
+                 <a href="./index.php">   <i class="far fa-user-circle icon-sidebar"></i>
                     <div class="row-sidebar-text name-bar ">
                         Admin
                     </div>
@@ -200,7 +200,7 @@ require_once('../connection.php');
                 <h2>
                     All the Head of Departments are Uploaded Successfully
                 </h2>
-                <a href="./index.html" style="text-align:center">
+                <a href="./index.php" style="text-align:center">
 
                 <h3>
                     Back to Dashboard

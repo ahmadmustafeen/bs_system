@@ -69,7 +69,7 @@ $con -> query($insert_period);
                 <p>D.A.M.S</p>
                 <hr>
                 <div class="row-sidebar">
-                 <a href="./index.html">   <i class="far fa-user-circle icon-sidebar"></i>
+                 <a href="./index.php">   <i class="far fa-user-circle icon-sidebar"></i>
                     <div class="row-sidebar-text name-bar ">
                         Admin
                     </div>
@@ -183,7 +183,7 @@ $con -> query($insert_period);
                 <h2>
                     Following Period is Uploaded
                 </h2>
-                <a href="./index.html" style="text-align:center">
+                <a href="./index.php" style="text-align:center">
 
                 <h3>
                     Back to Dashboard

@@ -28,27 +28,27 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <title>Add teacher - Admin</title>
+    <title>Delete Period - Admin</title>
 
 </head>
 
 <body>
     <div class="dashboard">
-      <?php require_once("./sidebar.php");?>
+        <?php require_once("./sidebar.php") ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="main-box">
                 <h2>
-                    Add Period Table
+                    Delete Period Table
                 </h2>
                 <div class="main-box-inner">
-                    <form action="./addPeriodFunc.php" method="POST" enctype="multipart/form-data">
+                    <form action="./deletePeriodfunc.php" method="POST" enctype="multipart/form-data">
                         <table>
                             <tr>
                                 <td>
                                     <label for="dept">
                                         Select Department
-
                                     </label>
                                 </td>
                                 <td>
@@ -239,7 +239,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
 
                                 </td>
                                 <td>
-                                    <button type="submit" name='deptS'>Submit</button>
+                                    <button type="submit" name='deptS'>Delete</button>
 
                                 </td>
                             </tr>
@@ -358,6 +358,8 @@ window.onclick = function(event) {
 </script>
 <script src="./jquery.js"></script>
 
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <script>
@@ -379,8 +381,6 @@ window.onclick = function(event) {
         );
     }
 </script>
-
-
 
 
 <script>

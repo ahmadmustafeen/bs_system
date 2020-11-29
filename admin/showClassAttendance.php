@@ -50,7 +50,6 @@ $table_name = array_unique($duplicate_table_name);
 if(sizeof($table_name)===0){ header("location:./index.php?no_Record_found=1");}
 $check = explode("_",$table_name[0]);
 $student_table = $check[0]."_".$check[1]."_".$check[3]."_".$check[4]."_students";
-// echo $student_table;
 
     
 
@@ -59,10 +58,8 @@ $student_table = $check[0]."_".$check[1]."_".$check[3]."_".$check[4]."_students"
 $lecture_ids = [];
 // get all lecture_id based on dates
 foreach ($period_ids_data as $period_id_data){
-    // echo $period_id_data;
     $explode = explode(" ",$period_id_data);
     $period_id=  $explode[1];
-    // echo "period_id ".$period_id;
     $query="SELECT `lecture_id`,`lecture_date` FROM `lecture_details` WHERE period_id = '$period_id'";
     $lecture_id =  queryToArr($con,$query,['lecture_id',"lecture_date"]); 
     array_push($lecture_ids,$lecture_id);
@@ -72,14 +69,9 @@ foreach ($period_ids_data as $period_id_data){
 
 $complete_class_response = [];
 foreach($table_name as $data){
-    // echo $data;
     $tablearr =  calculatingAttendance($con,$data,$student_table);
     array_push($complete_class_response,$tablearr);
 } 
-
-// foreach($complete_class_response as $class_response){
-    
-// }
 
 
 
@@ -153,6 +145,8 @@ foreach($table_name as $data){
                 $student_name = [];
                   foreach($complete_class_response as $class_responses){
                       $i=0;
+                    //   echo sizeof($complete_class_response[1]);
+                    //   echo sizeof($class_responses);
                     foreach($class_responses as $class_response){
                         
                         if(isset($present[$i])){
@@ -192,8 +186,7 @@ foreach($table_name as $data){
                         </h2>
                     </div>
                     <div class="table-h-row">
-                        <h2> <span class="heading-table-r">Number of Classes (conducted):</span> <?php echo $present[0] ?> </h2>
-                        <!-- <h2> <span class="heading-table-r">Number of Classes (missed):</span> <?php echo sizeof($complete_class_response[0][2]); ?> </h2> -->
+                        <h2> <span class="heading-table-r">Number of Classes (conducted):</span> <?php echo ((isset($present[0]))?($present[0]+$absent[0]):(0)) ?> </h2>
                     </div>
                 </div>
                 <table id='students'>
@@ -215,8 +208,9 @@ foreach($table_name as $data){
                 ?>
                  
                     <tr>
-                      
+                 
                         <td><?php echo($i+1)?></td>
+                        
                         <td><?php echo $name?></td>
                         <td><?php echo $id?></td>
                         <td ><?php echo $student_present?></td>
@@ -246,33 +240,7 @@ foreach($table_name as $data){
 
 
     
-    <!-- 
-        [
-            [
-                [name],[id],[present],[absent]
-            ],
-            [
-                [name],[id],[present],[absent]
-
-            ], 
-            [
-                [name],[id],[present],[absent]
-
-            ], 
-            [
-                [name],[id],[present],[absent]
-
-            ], 
-            [
-                [name],[id],[present],[absent]
-
-            ],    
-        ]
-
-
-
-
-     -->
+  
 
 
 
@@ -284,13 +252,12 @@ foreach($table_name as $data){
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 
-<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 <script src="../assests/script/dashbaord.js"></script>
 
-</html>
+</html> 
 
 
-<script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
+<!-- <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <script>
@@ -311,4 +278,4 @@ foreach($table_name as $data){
             }
         );
     }
-</script>
+</script> -->
