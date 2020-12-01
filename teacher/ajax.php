@@ -2,6 +2,8 @@
 
 require_once('../connection.php');
 if(isset($_POST['id'])){
+    
+date_default_timezone_set("Asia/Karachi");
         $get_recent_term_Q  = mysqli_query($con,"SELECT `term_name`,`term_id` FROM `term` WHERE 1");
     while($row = mysqli_fetch_assoc($get_recent_term_Q)){
         $term_name = $row['term_name'];
@@ -55,9 +57,10 @@ if(isset($_POST['id'])){
 
 
     $date = date('Y-m-d');
+    echo $date;
     $dayOfWeek = date("l", strtotime($date));
     $dayOfWeek = ucfirst($dayOfWeek);
-    $nu = 2;
+    // $nu = 2;
     switch($day_name){
         case 'Monday':
             $nu = 1;

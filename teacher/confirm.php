@@ -106,81 +106,7 @@ if(isset($_SESSION['User']))
 <body>
     <form action="./attendancesubmit.php" method="POST">
         <div class="dashboard">
-            <div class="sidebar " id="sidebar">
-                <div class="sidebar-inner " id="sidebar-inner">
-                    <p>D.A.M.S</p>
-                    <hr>
-                    <div class="row-sidebar profile">
-
-                        <i class="far fa-user-circle icon-sidebar"></i>
-                        <div class="row-sidebar-text name-bar ">
-                            <?php echo $teacher_name; ?>
-
-                        </div>
-                    </div>
-                    <div id="drop-down-profile" class="row-sidebar-profile">
-                        <div class="row-sidebar">
-                            <a href="">
-                                <i class="fas fa-address-card icon-sidebar"></i>
-                                <div class="row-sidebar-text ">
-                                    View Profile
-                                </div>
-                            </a>
-
-                        </div>
-                        <div class="row-sidebar">
-                            <a href="">
-                                <i class="fas fa-unlock-alt icon-sidebar"></i>
-                                <div class="row-sidebar-text ">
-                                    Change Password
-                                </div>
-                            </a>
-
-                        </div>
-
-                    </div>
-                    <hr>
-                    <div class="row-sidebar selected-sidebar">
-
-
-                        <i class="fas fa-file-upload icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Upload Attendance
-                        </div>
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="./attendance-eng.html">
-
-                            <i class="fas fa-file-upload icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                View Attendance
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="row-sidebar">
-                        <a href="../logout.php" class='row-sidebar' style='width:100%'>
-                            <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Logout
-                            </div>
-                        </a>
-                    </div>
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-            </div>
+         <?php include_once("./sidebar.php"); ?>
             <div class="dashboard-inner " id="main-bar">
                 <div class="floating-menu">
                     <button id="floating">X</button>
@@ -266,7 +192,7 @@ if(isset($_SESSION['User']))
 
                     </table>
 
-                    <input type="date" name="date" id='date' value="<?php  echo $date ?>" style="display:none">
+                    <input type="date" name="date" id='date' value="<?php  echo $date ?>">
                     <input name="class_name" id='class_name' value="<?php  echo $dept_id.'_'.$batch_id ?>"
                         style="display:none">
                     <input name="period_id" id='period_id' value="<?php  echo $period_ida ?>" style="display:none">

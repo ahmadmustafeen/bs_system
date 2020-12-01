@@ -1,6 +1,8 @@
 <?php
 
 require_once('../connection.php');
+
+session_start();
 if(isset($_SESSION['User']))
 {
     $username = $_SESSION['User'];

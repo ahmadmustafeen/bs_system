@@ -33,66 +33,68 @@ if(isset($_SESSION['User']))
 
 
 <div class="sidebar " id="sidebar">
-            <div class="sidebar-inner " id="sidebar-inner">
-                <p>D.A.M.S</p>
-                <hr>
-                <div class="row-sidebar profile">
+    <div class="sidebar-inner " id="sidebar-inner">
+        <p>D.A.M.S</p>
+        <hr>
+        <div class="row-sidebar profile">
 
-                    <i class="far fa-user-circle icon-sidebar"></i>
-                    <div class="row-sidebar-text name-bar ">
-                        <?php echo $teacher_name; ?>
+            <i class="far fa-user-circle icon-sidebar"></i>
+            <div class="row-sidebar-text name-bar ">
+                <?php echo $teacher_name; ?>
 
-                    </div>
-                </div>
-                <div id="drop-down-profile" class="row-sidebar-profile">
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-address-card icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                View Profile
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-unlock-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Change Password
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-                <hr>
-                <div class="row-sidebar selected-sidebar">
-
-
-                    <i class="fas fa-file-upload icon-sidebar"></i>
+            </div>
+        </div>
+        <div id="drop-down-profile" class="row-sidebar-profile">
+            <div class="row-sidebar">
+                <a href="">
+                    <i class="fas fa-address-card icon-sidebar"></i>
                     <div class="row-sidebar-text ">
-                        Upload Attendance
+                        View Profile
                     </div>
+                </a>
+
+            </div>
+            <div class="row-sidebar">
+                <a href="">
+                    <i class="fas fa-unlock-alt icon-sidebar"></i>
+                    <div class="row-sidebar-text ">
+                        Change Password
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="row-sidebar selected-sidebar">
+
+            <a href="./index.php">
+                <i class="fas fa-file-upload icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    Upload Attendance
                 </div>
-                <div class="row-sidebar">
-                    <a href="./viewAttendance.php">
+            </a>
 
-                        <i class="fas fa-file-upload icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            View Attendance
-                        </div>
-                    </a>
-                </div> 
-                <div class="row-sidebar">
-                        <a href="./forgetPassword.html">
-                            <i class="fas fa-unlock-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Change Password
-                            </div>
-                        </a>
+        </div>
+        <div class="row-sidebar">
+            <a href="./viewAttendance.php">
 
-                    </div>
-                <!-- <div class="row-sidebar">
+                <i class="fas fa-file-upload icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    View Attendance
+                </div>
+            </a>
+        </div>
+        <div class="row-sidebar">
+            <a href="./forgetPassword.html">
+                <i class="fas fa-unlock-alt icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    Change Password
+                </div>
+            </a>
+
+        </div>
+        <!-- <div class="row-sidebar">
                     <i class="far fa-calendar-alt icon-sidebar"></i>
                     <div class="row-sidebar-text ">
                         View Timetable
@@ -122,26 +124,26 @@ if(isset($_SESSION['User']))
                         PDF Report Download
                     </div>
                 </div> -->
-                <div class="row-sidebar">
-                    <a href="../logout.php" class='row-sidebar' style='width:100%'>
-                        <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Logout
-                        </div>
-                    </a>
+        <div class="row-sidebar">
+            <a href="../logout.php" class='row-sidebar' style='width:100%'>
+                <i class="fas fa-sign-out-alt icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    Logout
                 </div>
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
+            </a>
         </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>

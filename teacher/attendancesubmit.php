@@ -61,7 +61,7 @@ if(isset($_POST['edit'])){
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../assests/style/dashboard-index.css">
     <link rel="stylesheet" href="../assests/style/teacher-portal.css">
-<script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -71,80 +71,7 @@ if(isset($_POST['edit'])){
 <body style="background-color: #e0e0e0;">
 
     <div class="dashboard">
-        <div class="sidebar " id="sidebar">
-            <div class="sidebar-inner " id="sidebar-inner">
-                <p>D.A.M.S</p>
-                <hr>
-                <div class="row-sidebar profile">
-
-                    <i class="far fa-user-circle icon-sidebar"></i>
-                    <div class="row-sidebar-text name-bar ">
-                        <?php echo $teacher_name; ?>
-
-                    </div>
-                </div>
-                <div id="drop-down-profile" class="row-sidebar-profile">
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-address-card icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                View Profile
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="row-sidebar">
-                        <a href="">
-                            <i class="fas fa-unlock-alt icon-sidebar"></i>
-                            <div class="row-sidebar-text ">
-                                Change Password
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-                <hr>
-                <div class="row-sidebar selected-sidebar">
-
-
-                    <i class="fas fa-file-upload icon-sidebar"></i>
-                    <div class="row-sidebar-text ">
-                        Upload Attendance
-                    </div>
-                </div>
-                <div class="row-sidebar">
-                    <a href="./viewAttendance.php">
-
-                        <i class="fas fa-file-upload icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            View Attendance
-                        </div>
-                    </a>
-                </div>
-                <div class="row-sidebar">
-                    <a href="../logout.php" class='row-sidebar' style='width:100%'>
-                        <i class="fas fa-sign-out-alt icon-sidebar"></i>
-                        <div class="row-sidebar-text ">
-                            Logout
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-        </div>
+      <?php include_once("./sidebar.php") ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="floating-menu">
                 <button id="floating">X</button>

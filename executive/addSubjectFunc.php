@@ -16,7 +16,7 @@ if(isset($_SESSION['User']))
     }
 
 
-?>
+
 
 
 
@@ -244,5 +244,4 @@ function get(ida) {
 
 
 
-
-?>
+}?>

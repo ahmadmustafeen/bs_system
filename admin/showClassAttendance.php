@@ -29,8 +29,8 @@ while($row = mysqli_fetch_assoc($applyQuery)){
 
 
 // null will be replaced by code to send it back
-$_GET['dept_id']?($getDept = $_GET['dept_id']):null;
-$_GET['batch_id']?($getBatch = $_GET['batch_id']):null;
+$_GET['dept_id']?($getDept = $_GET['dept_id']):header("./index.php");
+$_GET['batch_id']?($getBatch = $_GET['batch_id']):header("./index.php");
 $query="SELECT `period_id`,`subject_id`,`section` FROM `period_table_normal` WHERE dept_id = '$getDept' and batch_id = '$getBatch' and term_id='$term_id'";
 
 $get_department = mysqli_query($con,"SELECT `department_name` from `department` where department_id = '$getDept'");
