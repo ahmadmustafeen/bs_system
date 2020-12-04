@@ -195,7 +195,30 @@ function get(id) {
     }
 }
 </script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
+<script src="../assests/script/dashbaord.js"></script>
+<script>
+        
+if ($(window).width() > 768) {
+    $('#sidebar').hover(function() {
+            // alert("done");
+            $(this).addClass('sidebar-opened');
+            $(".row-sidebar-text").addClass('text-opened');
+            $('.icon-sidebar').css('margin', '0px');
+            $('.row-sidebar').css('padding', '0px 10px');
+        },
+        function() {
+            $(this).removeClass('sidebar-opened');
+            $(".row-sidebar-text").removeClass('text-opened');
+            $(".dashboard-inner").removeClass('da');
+            $('.icon-sidebar').css('margin', 'auto');
+            $('.row-sidebar').css('padding', '0px');
+        }
+    );
+}
+</script>
 </html>
 
 
@@ -214,6 +237,7 @@ else if(isset($_POST['submit'])){
     $period_id =  $_POST['period_id'];
     
     $date = $_POST['date'];
+    // echo"$date";
     $period_name_Qa  = mysqli_query($con,"SELECT `subject_id`,`section` FROM `period_table_normal` WHERE period_id = '$period_id'");
 
     while($row = mysqli_fetch_assoc($period_name_Qa)){
@@ -241,8 +265,11 @@ else if(isset($_POST['submit'])){
 
     // inserting into lecture detail so a new id is generated and can be used to enter the attendance for that specific lecture
     // $date = date('Y-m-d');
-    $queryinsert = "INSERT INTO `lecture_details`( `period_id`, `lecture_date`) VALUES ('$period_id','$date')";
-    $con -> query($queryinsert);
+    // echo $period_id,$date;
+    $queryinsert = "INSERT INTO `lecture_details`( `period_id`, `lecture_date`,`week_id`,`term_id`) VALUES ('$period_id','$date','0','0')";
+    if($con -> query($queryinsert)){
+        echo "lectureId";
+    };
 
 
     $id = [];

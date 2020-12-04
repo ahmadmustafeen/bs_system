@@ -322,7 +322,7 @@ foreach($period_ids as $period_id){
                     <input name='period_id' id='period_id' value='<?php echo $period_table_id ?>' style="display:none">
                     <div id='studentsa' style="width:80%">
 
-                        <input type="date" name="date" required>
+                        <input type="date" style="display:none" name="date" required>
                     </div>
 
                     <!-- <button type="submit" id="autoa" name="autoa" style="text-align:center">Confirm Submission</button> -->

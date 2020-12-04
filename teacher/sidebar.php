@@ -94,6 +94,15 @@ if(isset($_SESSION['User']))
             </a>
 
         </div>
+        <div class="row-sidebar">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7XlyZpiD6l-U8Irrd-GLdNF5ne7IcJW8iGOqs4IxFSJN4zA/viewform?usp=sf_link" target="_blank">
+            <i class="fas fa-phone-square-alt icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                   Contact Support
+                </div>
+            </a>
+
+        </div>
         <!-- <div class="row-sidebar">
                     <i class="far fa-calendar-alt icon-sidebar"></i>
                     <div class="row-sidebar-text ">

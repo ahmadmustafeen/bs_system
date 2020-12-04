@@ -27,7 +27,7 @@
             </a>
         </div>
         <div class="row-sidebar">
-            <a href="./addStudent.php">
+            <a href="./addstudent.php">
                <i class="fas fa-plus icon-sidebar"></i>
                 <div class="row-sidebar-text ">
                     Add Students (Regular)
@@ -43,7 +43,7 @@
             </a>
         </div>
         <div class="row-sidebar">
-            <a href="./deletestudent.php">
+            <a href="./deleteStudent.php">
                <i class="far fa-trash-alt icon-sidebar"></i>
                 <div class="row-sidebar-text ">
                     Delete Student 
@@ -59,10 +59,18 @@
             </a>
         </div>
         <div class="row-sidebar">
-            <a href="./deleteperiod.php">
+            <a href="./deletePeriod.php">
                <i class="far fa-trash-alt icon-sidebar"></i>
                 <div class="row-sidebar-text ">
                     Delete Period Table
+                </div>
+            </a>
+        </div> 
+        <div class="row-sidebar">
+            <a href="./showperiod.php">
+               <i class="far fa-trash-alt icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    View Period Table
                 </div>
             </a>
         </div>

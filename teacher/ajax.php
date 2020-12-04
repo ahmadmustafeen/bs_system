@@ -57,7 +57,7 @@ date_default_timezone_set("Asia/Karachi");
 
 
     $date = date('Y-m-d');
-    echo $date;
+    // echo $date;
     $dayOfWeek = date("l", strtotime($date));
     $dayOfWeek = ucfirst($dayOfWeek);
     // $nu = 2;
