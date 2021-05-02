@@ -98,10 +98,10 @@ date_default_timezone_set("Asia/Karachi");
     // $table_name = 'cs_4_1_a_students';
     
    echo '
-   <input type="date" value='.$date.' name="date" style="display:none">
+   
     <div class="table-header">  <div class="table-h-row">    <h2>   <span class="heading-table-r">Department:</span> '.$department_name.'
        </h2>  </div>  <div class="table-h-row">       <h2> <span class="heading-table-r">Batch:</span>  '.$batch_name.' </h2> <h2><span class="heading-table-r">Teacher:</span>  '.$teacher_name.'
-       </h2> </div>  <div class="table-h-row">  <h2> <span class="heading-table-r">Date:</span> '.$date.'</h2><h2><span class="heading-table-r">Day:</span>  '.$day_name.'   </h2>  <h2> <span class="heading-table-r">Time:</span> '.$period_name.' </h2>
+       </h2> </div>  <div class="table-h-row">  <h2> <span class="heading-table-r">Date:</span>'. $date.'</h2><h2><span class="heading-table-r">Day:</span>  '.$day_name.'   </h2>  <h2> <span class="heading-table-r">Time:</span> '.$period_name.' </h2>
    </div> <div class="table-h-row"> <h2>  <span class="heading-table-r">Subject:</span>  '.$subject_name.' </h2> </div></div>';
     
     echo "<table style='width:100% !important'>

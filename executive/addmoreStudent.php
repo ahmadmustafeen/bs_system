@@ -54,7 +54,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
                     Add More Students to Existing Class
                 </h2>
                 <div class="main-box-inner">
-                    <form action="./addmorestudentfunc.php" method="POST" enctype="multipart/form-data">
+                    <form action="./addmoreStudentFunc.php" method="POST" enctype="multipart/form-data">
                         <table>
                             <tr>
                                 <td>

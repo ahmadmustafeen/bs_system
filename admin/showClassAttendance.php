@@ -90,8 +90,6 @@ foreach($table_name as $data){
 
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -147,9 +145,9 @@ foreach($table_name as $data){
 
 <body>
     <div class="dashboard select-admin-main">
-       
-       
-            <?php
+
+
+        <?php
             include_once("./sidebar.php");
                 $present = [];
                 $absent = [];
@@ -177,7 +175,7 @@ foreach($table_name as $data){
 
                 }
                 ?>
-       
+
         <div class="dashboard-inner " id="main-bar">
             <div class="floating-menu">
                 <button id="floating">X</button>
@@ -188,17 +186,93 @@ foreach($table_name as $data){
                 </h2>
             </div>
             <div class="dit-class-students confirm" style="margin-top:100px">
-                <div class="table-header" style="display:flex;flex-direction:column;justify-content:center;width:80%;align-self:center;">
-                    <div class="table-h-row" >
+
+                <?php
+
+?> 
+<div class="table-header" style="justify-content:center;width:fit-content">
+                <h1 style="background-color:rgba(0,255,255,0.1);padding:20px">
+                    Teacher Wise Status of class</h1>
+            </div>
+
+            <?php
+foreach($table_name  as $table){
+   
+    // echo $table;
+    $no_of_classes=0;
+    $contentExtract = explode("_",$table);
+    $check_table = mysqli_query($con,"SELECT `a1` FROM `$table` WHERE 1");
+    while($row = mysqli_fetch_assoc($check_table)){
+        $no_of_classes++;
+    }
+    $dept_id =  $contentExtract[0];
+    $batch_id =  $contentExtract[1];
+    $subject_id =  $contentExtract[2];
+    $subject_name_Q  = mysqli_query($con,"SELECT `subject_name` FROM `subject` WHERE subject_id = '$subject_id'");
+    while($row = mysqli_fetch_assoc($subject_name_Q)){
+        $subject_name = $row['subject_name'];
+    }
+    $batch_name_Q  = mysqli_query($con,"SELECT `batch_name` FROM `batch` WHERE batch_id = '$batch_id'");
+    while($row = mysqli_fetch_assoc($subject_name_Q)){
+        $batch_name = $row['batch_name'];
+    }
+    $teacher_id_Q  = mysqli_query($con,"SELECT `teacher_id` FROM `period_table_normal` WHERE dept_id = '$dept_id' and batch_id = '$batch_id' and subject_id = '$subject_id' and term_id = '$term_id'");
+    while($row = mysqli_fetch_assoc($teacher_id_Q)){
+        $teacher_id = $row['teacher_id'];
+    }
+    $teacher_name_Q  = mysqli_query($con,"SELECT `teacher_name` FROM `teacher` WHERE teacher_id = '$teacher_id'");
+    while($row = mysqli_fetch_assoc($teacher_name_Q)){
+        $teacher_name = $row['teacher_name'];
+    }
+    
+    // $no_of_classes = 0;
+    // while($row = mysqli_fetch_assoc(mysqli_query($con,"SELECT `a1` FROM `$table` WHERE 1"))){
+        // $no_of_classes++;
+    // }
+    ?>
+                <div class="table-header"
+                    style="display:flex;flex-direction:column;justify-content:center;width:80%;align-self:center;background-color:rgba(0,255,255,0.1)">
+                    <div class="table-h-row">
+                        <h2> <span class="heading-table-r">Teacher Name:</span> <?php echo $teacher_name?>
+                        </h2>
+                    </div>
+                    <div class="table-h-row">
+                        <h2> <span class="heading-table-r">Subject Name:</span> <?php echo $subject_name?> </h2>
+                        </h2>
+                    </div>
+                    <div class="table-h-row">
+                        <h2> <span class="heading-table-r">Number of Classes (conducted):</span>
+                            <?php echo $no_of_classes; ?> </h2>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <?php
+    // echo "In Total $no_of_classes classes are conducted of subject $subject_name by Teacher $teacher_name<br>";  
+}
+?>
+
+
+
+
+                <div class="table-header" style="justify-content:center;width:fit-content">
+                    <h1 style="background-color:rgba(0,255,255,0.1);padding:20px">
+                        Overall Status of class</h1>
+                </div>
+
+                <div class="table-header"
+                    style="display:flex;flex-direction:column;justify-content:center;width:80%;align-self:center;">
+                    <div class="table-h-row">
                         <h2> <span class="heading-table-r">Department:</span> <?php echo $department_name?>
                         </h2>
                     </div>
                     <div class="table-h-row">
-                        <h2> <span class="heading-table-r">Batch:</span>  <?php echo $batch_name?> </h2>
+                        <h2> <span class="heading-table-r">Batch:</span> <?php echo $batch_name?> </h2>
                         </h2>
                     </div>
                     <div class="table-h-row">
-                        <h2> <span class="heading-table-r">Number of Classes (conducted):</span> <?php echo ((isset($present[0]))?($present[0]+$absent[0]):(0)) ?> </h2>
+                        <h2> <span class="heading-table-r">Number of Classes (conducted):</span>
+                            <?php echo ((isset($present[0]))?($present[0]+$absent[0]):(0)) ?> </h2>
                     </div>
                 </div>
                 <table id='students'>
@@ -210,7 +284,7 @@ foreach($table_name as $data){
                         <td>Status</td>
 
                     </tr>
-                 <?php 
+                    <?php 
                  for($i=0;$i<(sizeof($present));$i++){
                      $name = $student_name[$i];
                      $id = $student_id[$i];
@@ -218,28 +292,28 @@ foreach($table_name as $data){
                      $student_absent = $absent[$i];
                     $student_present_percent = ($student_present===0)?0: ((($student_present)/($student_present+$student_absent))*100);
                 ?>
-                 
+
                     <tr>
-                 
+
                         <td><?php echo($i+1)?></td>
-                        
+
                         <td><?php echo $name?></td>
                         <td><?php echo $id?></td>
-                        <td ><?php echo $student_present?></td>
-                        <td ><?php echo round($student_present_percent)?>%</td>
+                        <td><?php echo $student_present?></td>
+                        <td><?php echo round($student_present_percent)?>%</td>
                     </tr>
                     <?php
                      }
                     ?>
-                   
+
                 </table>
                 <a href="./index.php">
-                <button >
-                    Back to Dashboard
+                    <button>
+                        Back to Dashboard
                     </button>
                 </a>
-              
-           
+
+
             </div>
 
 
@@ -251,8 +325,8 @@ foreach($table_name as $data){
     </div>
 
 
-    
-  
+
+
 
 
 
@@ -266,7 +340,7 @@ foreach($table_name as $data){
 
 <script src="../assests/script/dashbaord.js"></script>
 
-</html> 
+</html>
 <?php
 
                     }

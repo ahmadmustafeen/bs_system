@@ -6,7 +6,7 @@ if(isset($_SESSION['User']))
     $username = $_SESSION['User'];
     // echo $username;
     $password = $_POST['Password'];
-    $password = md5($password);
+    // $password = md5($password);
     // echo $password;
     $query = "UPDATE `login_info` SET `user_password`='$password' where username = '$username'";
     if($con -> query($query)){

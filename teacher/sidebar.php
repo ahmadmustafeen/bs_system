@@ -55,7 +55,7 @@ if(isset($_SESSION['User']))
 
             </div>
             <div class="row-sidebar">
-                <a href="">
+                <a href="./forgetPassword.php">
                     <i class="fas fa-unlock-alt icon-sidebar"></i>
                     <div class="row-sidebar-text ">
                         Change Password
@@ -86,7 +86,7 @@ if(isset($_SESSION['User']))
             </a>
         </div>
         <div class="row-sidebar">
-            <a href="./forgetPassword.html">
+            <a href="./forgetPassword.php">
                 <i class="fas fa-unlock-alt icon-sidebar"></i>
                 <div class="row-sidebar-text ">
                     Change Password

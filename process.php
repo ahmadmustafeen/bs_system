@@ -11,7 +11,7 @@ session_start();
        {
         $username = $_POST['UName'];
         $password = $_POST['Password'];
-        $password = md5($password);
+        // $password = md5($password);
 
             $query="Select * from login_info where username='$username' and user_password='$password'";
             $result=mysqli_query($con,$query);

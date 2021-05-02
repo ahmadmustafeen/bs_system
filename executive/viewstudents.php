@@ -1,8 +1,8 @@
 <?php
 
 require_once('../connection.php');
+
 session_start();
-date_default_timezone_set("Asia/Karachi");
 if(isset($_SESSION['User']))
 {
     $username = $_SESSION['User'];
@@ -13,21 +13,9 @@ if(isset($_SESSION['User']))
     if($user_level != '2'){
         header('location:../wellcome.php');
     }
-
-
-
+    
 $get_depart  = mysqli_query($con,"SELECT `department_id`,`department_name` FROM `department` WHERE 1");
 $get_batch  = mysqli_query($con,"SELECT `batch_id`,`batch_name` FROM `batch` WHERE 1");
-$get_time = mysqli_query($con,"SELECT `period_id`, `period_name` FROM `period` WHERE 1");
-$get_day = mysqli_query($con,"SELECT `day_id`, `day_name` FROM `day` WHERE 1");
-$get_teacher = mysqli_query($con,"SELECT `teacher_id`, `teacher_name` FROM `teacher` WHERE 1");
-$get_room = mysqli_query($con,"SELECT `room_id`, `room_name` FROM `room` WHERE 1");
-$get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_type` FROM `subject` WHERE 1");
-
-
-
-
-
 
 
 ?>
@@ -43,32 +31,64 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-<script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <title>Delete Period - Admin</title>
+    <title>Students List</title>
 
 </head>
 
 <body>
     <div class="dashboard">
-        <?php require_once("./sidebar.php") ?>
+      <?php require_once("./sidebar.php") ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="main-box">
                 <h2>
-                    Delete Period Table
+                    View Students List
                 </h2>
                 <div class="main-box-inner">
-                    <form action="./deletePeriodFunc.php" method="POST" enctype="multipart/form-data">
+                    <form action="./viewstudentsfunc.php" method="POST" enctype="multipart/form-data">
                         <table>
-                           
                             <tr>
                                 <td>
-                                    <label for="section">
-                                        Enter Period ID
+                                    <label for="dept">
+                                        Select Department
                                     </label>
                                 </td>
                                 <td>
-                                  <input type= "number" name="period_id" />
+                                    <Select name='dept' id='dept' required>
+                                        <?php
+                                        while($row = mysqli_fetch_assoc($get_depart)){
+                                            $department_id = $row['department_id'];
+                                            $department_name = $row['department_name'];
+                                        
+                                        ?>
+                                        <option value="<?php echo $department_id ?>" name='dept'>
+                                            <?php echo $department_name ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </Select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="batch" required>
+                                        Select Batch
+                                    </label>
+                                </td>
+                                <td>
+                                    <Select name='batch' id='batch'>
+                                        <?php
+                                        while($row = mysqli_fetch_assoc($get_batch)){
+                                            $batch_id = $row['batch_id'];
+                                            $batch_name = $row['batch_name'];
+                                        
+                                        ?>
+                                        <option value="<?php echo $batch_id ?>" name='batch'>
+                                            <?php echo $batch_name ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </Select>
                                 </td>
                             </tr>
 
@@ -77,7 +97,7 @@ $get_subject = mysqli_query($con,"SELECT `subject_id`, `subject_name`, `subject_
 
                                 </td>
                                 <td>
-                                    <button type="submit" name='deptS'>Delete</button>
+                                    <button type="view" name='view'>View Students</button>
 
                                 </td>
                             </tr>
@@ -197,7 +217,6 @@ window.onclick = function(event) {
 <script src="./jquery.js"></script>
 
 
-
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <script>
@@ -219,6 +238,10 @@ window.onclick = function(event) {
         );
     }
 </script>
+    
+
+
+
 
 
 <script>

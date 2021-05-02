@@ -24,23 +24,13 @@ while($row = mysqli_fetch_assoc($get_recent_term_Q)){
 }
 
 
-$dept =  $_POST['dept'];
-$batch =  $_POST['batch'];
-$teacher =  $_POST['teacher'];
-$room =  $_POST['room'];
-$time =  $_POST['time'];
-$subject =  $_POST['subject'];
-$day =  $_POST['day'];
-$credit =  $_POST['credit'];
-$section =  $_POST['section'];
+$period_id =  $_POST['period_id'];
 
-$section = strtolower($section);
-$term_id = 1;
+echo $period_id;
 
 
 
-
-$get_details  = "DELETE FROM `period_table_normal` WHERE dept_id = '$dept' and batch_id = '$batch' and teacher_id = '$teacher' and room_id = '$room' and timing_id = '$time' and day_id = '$day' and credit_hour = '$credit'";
+$get_details  = "DELETE FROM `period_table_normal` WHERE period_id = '$period_id'";
 if($con -> query($get_details)){
 ?>
 

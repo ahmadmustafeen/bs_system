@@ -27,6 +27,14 @@
             </a>
         </div>
         <div class="row-sidebar">
+            <a href="./addmoreteacher.php">
+               <i class="fas fa-plus icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    Add More Teachers
+                </div>
+            </a>
+        </div>
+        <div class="row-sidebar">
             <a href="./addstudent.php">
                <i class="fas fa-plus icon-sidebar"></i>
                 <div class="row-sidebar-text ">
@@ -43,6 +51,14 @@
             </a>
         </div>
         <div class="row-sidebar">
+            <a href="./viewstudents.php">
+               <i class="far fa-eye icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    View Students
+                </div>
+            </a>
+        </div>
+        <div class="row-sidebar">
             <a href="./deleteStudent.php">
                <i class="far fa-trash-alt icon-sidebar"></i>
                 <div class="row-sidebar-text ">
@@ -50,6 +66,14 @@
                 </div>
             </a>
         </div>
+        <!--<div class="row-sidebar">-->
+        <!--    <a href="./editstudent.php">-->
+        <!--       <i class="far fa-edit icon-sidebar"></i>-->
+        <!--        <div class="row-sidebar-text ">-->
+        <!--            Edit Student -->
+        <!--        </div>-->
+        <!--    </a>-->
+        <!--</div>-->
         <div class="row-sidebar">
             <a href="./addperiod.php">
                 <i class="fas fa-plus icon-sidebar"></i>
@@ -68,9 +92,17 @@
         </div> 
         <div class="row-sidebar">
             <a href="./showperiod.php">
-               <i class="far fa-trash-alt icon-sidebar"></i>
+            <i class="far fa-eye icon-sidebar"></i>
                 <div class="row-sidebar-text ">
                     View Period Table
+                </div>
+            </a>
+        </div>
+        <div class="row-sidebar">
+            <a href="./addperiodtime.php">
+                <i class="fas fa-plus icon-sidebar"></i>
+                <div class="row-sidebar-text ">
+                    Add New Time
                 </div>
             </a>
         </div>

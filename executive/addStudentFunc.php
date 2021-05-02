@@ -25,9 +25,10 @@ $term =  $term_id;
 $dept =  $_POST['dept'];
 $batch =  $_POST['batch'];
 $section =  $_POST['section'];
+$section = strtolower($section);
 $table_name = $dept."_".$batch."_".$term."_".$section."_students";
 // echo $table_name;
-$section = strtolower($section);
+
 $create_table = "CREATE TABLE $table_name(
     student_rollnumber INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     student_name VARCHAR(100) NOT NULL,

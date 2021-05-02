@@ -77,28 +77,35 @@ if(isset($_SESSION['User']))
 
 </html>
 
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 <script>
+$("#selectDepart").change(function() {
+    $('.dit-class-students').css('display', 'flex');
+    var x = document.getElementById('selectDepart').value;
+  document.getElementById('period_id').value = x
 
-    if ($(window).width() > 768) {
-        $('#sidebar').hover(function () {
+});
+
+if ($(window).width() > 768) {
+    $('#sidebar').hover(function() {
             // alert("done");
             $(this).addClass('sidebar-opened');
             $(".row-sidebar-text").addClass('text-opened');
             $('.icon-sidebar').css('margin', '0px');
             $('.row-sidebar').css('padding', '0px 10px');
         },
-            function () {
-                $(this).removeClass('sidebar-opened');
-                $(".row-sidebar-text").removeClass('text-opened');
-                $(".dashboard-inner").removeClass('da');
-                $('.icon-sidebar').css('margin', 'auto');
-                $('.row-sidebar').css('padding', '0px');
-            }
-        );
-    }
+        function() {
+            $(this).removeClass('sidebar-opened');
+            $(".row-sidebar-text").removeClass('text-opened');
+            $(".dashboard-inner").removeClass('da');
+            $('.icon-sidebar').css('margin', 'auto');
+            $('.row-sidebar').css('padding', '0px');
+        }
+    );
+}
 
 </script>
-
 
 
 <?php

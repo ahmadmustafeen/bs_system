@@ -192,7 +192,7 @@ if(isset($_SESSION['User']))
 
                     </table>
 
-                    <input type="date" name="date" id='date' value="<?php  echo $date ?>" style="display:none">
+                    <input type="date" name="date" id='date' value="<?php  echo $date ?>" >
                     <input name="class_name" id='class_name' value="<?php  echo $dept_id.'_'.$batch_id ?>"
                         style="display:none">
                     <input name="period_id" id='period_id' value="<?php  echo $period_ida ?>" style="display:none">
@@ -458,7 +458,7 @@ if ($(window).width() > 768) {
 
                     </table>
 
-                    <input type="date" name="date" id='date' value="<?php  echo $date ?>" style="display:none">
+                    <input type="date" name="date" id='date' value="<?php  echo $date ?>">
                     <input name="class_name" id='class_name' value="<?php  echo $dept_id.'_'.$batch_id ?>"
                         style="display:none">
                     <input name="period_id" id='period_id' value="<?php  echo $period_id ?>" style="display:none">

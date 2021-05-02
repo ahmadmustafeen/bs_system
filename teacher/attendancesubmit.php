@@ -157,14 +157,7 @@ if(isset($_POST['edit'])){
     crossorigin="anonymous"></script>
 <script>
 // attendace template to be put in loop
-var switchStatus = false;
-$(".students_present").on('change', function() {
-    if ($(this).is(':checked')) {
-        switchStatus = $(this).is(':checked');
-    } else {
-        switchStatus = $(this).is(':checked');
-    }
-});
+
 if ($(window).width() > 768) {
     $('#sidebar').hover(function() {
             // alert("done");
@@ -188,10 +181,8 @@ function get(id) {
     if (
         document.getElementById(id).value == 'present') {
         document.getElementById(id).value = 'absent';
-
     } else {
         document.getElementById(id).value = 'present';
-
     }
 }
 </script>
@@ -220,11 +211,6 @@ if ($(window).width() > 768) {
 }
 </script>
 </html>
-
-
-
-
-
 <?php
 }
 else if(isset($_POST['submit'])){ 

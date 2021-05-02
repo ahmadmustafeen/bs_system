@@ -2,25 +2,14 @@
 // This code is written by collabration of Ahmad Mustafeen and Satish Jeeyani.
 // All part of this code is copywrited.
 
-
-
-
-
-
 // About the code
-
-
 
 // The most imp thing is the teacher_id which is being used as a primary key in the table.
 // "teacher" table have the teacher name and respective teacher id ===> section 1 and section 2
 
 // period_table have the recent time table of the current semester and from their all the subject(Class is pulled) ====> section 3
 
-
-
 // now to get all the names of the student first get the input choosen by the user
-
-
 
 require_once('../connection.php');
 session_start();
@@ -39,7 +28,7 @@ if(isset($_SESSION['User']))
     $username_T = "usertype_".$user_level."_info";
     
 
-
+$time_limit = 1;
 
 
     // section 1
@@ -84,14 +73,29 @@ if(isset($_SESSION['User']))
     }
     
     $pu = $nu-1;
-  $period_name_Q  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE (teacher_id = '$teacher_id') and ((day_id = '$nu') or (day_id = '$pu')) ");
+//     $period_name_Q  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE (teacher_id = '$teacher_id') and ((day_id = '$nu') or (day_id = '$pu')) ");
+//   $period_name_Qaa  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE (teacher_id = '$teacher_id') and ((day_id = '$nu') or (day_id = '$pu')) ");
+$period_name_Q  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE (teacher_id = '$teacher_id')");
   $period_name_Qaa  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE (teacher_id = '$teacher_id') and ((day_id = '$nu') or (day_id = '$pu')) ");
 $period_ids = [];
-while($row = mysqli_fetch_assoc($period_name_Q)){
-$period_id = $row['period_id'];
-array_push($period_ids,$period_id);
-}
+// while($row = mysqli_fetch_assoc($period_name_Q)){
+// $period_id = $row['period_id'];
+// array_push($period_ids,$period_id);
+// }
 // echo sizeof($period_ids);
+
+if($time_limit==1){
+    while($row = mysqli_fetch_assoc($period_name_Q)){
+        $period_id = $row['period_id'];
+        array_push($period_ids,$period_id);
+        }
+}else{
+    while($row = mysqli_fetch_assoc($period_name_Qaa)){
+        $period_id = $row['period_id'];
+        array_push($period_ids,$period_id);
+        }
+}
+
 
 foreach($period_ids as $period_id){
     $date = date('Y-m-d');
@@ -135,7 +139,7 @@ foreach($period_ids as $period_id){
 
 <body style="background-color: #e0e0e0;">
     <div class="dashboard">
-       <?php include_once("./sidebar.php"); ?>
+        <?php include_once("./sidebar.php"); ?>
         <div class="dashboard-inner " id="main-bar">
             <div class="floating-menu">
                 <button id="floating">X</button>
@@ -157,92 +161,10 @@ foreach($period_ids as $period_id){
                         </h2>
                         <div class="tick" id="manu" style="background-color:rgb(7, 219, 95);"></div>
                     </div>
-                    <!-- <div class="attendance-upload-type">
-                        <h2>
-                            Manually Submit Attendance
-                        </h2>
-                        <div class="tick" id="manu"></div>
-                    </div> -->
+                
                 </div>
             </div>
-            <!-- <section id="automatic"> -->
-
-            <!-- best batch -->
-            <!-- <div class="dashboard-inner-teacher">
-                    <h2 style="text-align: center;">
-                        Upload Excel Sheet
-                    </h2>
-
-                    <div class="dit-heading">
-                        <table>
-                            <tr>
-                                <td>
-                                    <h3>Select Class</h3>
-                                </td>
-                                <td>
-                                    <Select name="depart" id="selectDepart">
-
-                                        <option selected disabled>Select from Available Classes</option>
-                                        <?php
-
-
-                                        // foreach($period_ids as $period_id){
-                                        //     echo sizeof($period_ids);
-                                        //     $period_name_Qaaa  = mysqli_query($con,"SELECT * FROM `period_table_normal` WHERE period_id = '$period_id'");
-                                        //   while($row = mysqli_fetch_assoc($period_name_Qaaa)){
-                                        //      echo $period_id;
-                                        //     $period_table_id = $row['period_id'];
-                                        //     $period_id = $row['timing_id'];
-                                        //     $batch_id = $row['batch_id'];
-                                        //     $subject_id = $row['subject_id'];
-                                        
-                                      
-                                      
-                                      
-                                        // $period_time_Q  = mysqli_query($con,"SELECT `period_name` FROM `period` WHERE period_id = '$period_id'");
-                                        //   while($row = mysqli_fetch_assoc($period_time_Q)){
-                                        //       $period_timing = $row['period_name'];
-                                        //   }
-                                      
-                                      
-                                        //   $batch_name_Q  = mysqli_query($con,"SELECT `batch_name` FROM `batch` WHERE batch_id = '$batch_id'");
-                                        //   while($row = mysqli_fetch_assoc($batch_name_Q)){
-                                        //       $batch_name = $row['batch_name'];
-                                        //   }
-                                      
-                                      
-                                        //   $subject_name_Q  = mysqli_query($con,"SELECT `subject_name` FROM `subject` WHERE subject_id = '$subject_id'");
-                                        //   while($row = mysqli_fetch_assoc($subject_name_Q)){
-                                        //       $subject_name = $row['subject_name'];
-                                        //   }
-                                        //   $option_period =  ucwords($subject_name)." ===== ".$batch_name." ===== ".$period_timing;
-                                          
-                                        
-                                        // ?>
-                                        // <option value=" <?php echo $period_table_id ?>"><?php echo $option_period ?>
-                                        // </option>
-                                        // <?php
-                                        //   }
-                                        // }
-                                        ?>
-                                    </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h3>Upload File</h3>
-                                </td>
-                                <td>
-                                    <input type="file" name="excelFile" id="excelFile" required>
-                                </td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div> -->
-            <!-- </section> -->
-
-
+        
             <form action="./confirm.php" method="POST" enctype="multipart/form-data"
                 style='width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center'>
 
@@ -322,10 +244,17 @@ foreach($period_ids as $period_id){
                     <input name='period_id' id='period_id' value='<?php echo $period_table_id ?>' style="display:none">
                     <div id='studentsa' style="width:80%">
 
-                        <input type="date" style="display:none" name="date" required>
-                    </div>
-
-                    <!-- <button type="submit" id="autoa" name="autoa" style="text-align:center">Confirm Submission</button> -->
+                        <!-- <input type="date" style="display:none" name="date" required> -->
+                     </div>
+                     <?php if($time_limit==1){
+                            ?>
+                        <input type="date" name="date" required><?php
+                        }else{
+                            ?>
+                        <input type="date" style="display:none" name="date" value="<?php echo $date?>" required><?php
+                        }
+                        ?>
+                    
                     <button type="submit" id="index" name="index" style="text-align:center;">Review Before
                         Submission</button>
 
@@ -337,7 +266,7 @@ foreach($period_ids as $period_id){
 
 
 
-
+ 
     </div>
 
 
@@ -347,7 +276,6 @@ foreach($period_ids as $period_id){
     crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/407fccd64e.js" crossorigin="anonymous"></script>
 
-<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 <script src="../assests/script/dashbaord.js"></script>
 
 </html>
